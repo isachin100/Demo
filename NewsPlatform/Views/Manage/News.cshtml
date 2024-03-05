@@ -1,0 +1,45 @@
+﻿@model NewsViewModel
+
+@{
+    ViewData["Title"] = "News";
+}
+
+@await Html.PartialAsync("_breadcrumb", new BaseViewModel() { Breadcrumbs = Model.Breadcrumbs, Heading = Model.Heading })
+
+<section class="section">  
+    <div class="row">
+        <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                    <h5 class="card-title">News<span>| Management</span></h5>
+                    <table class="table table-borderless datatable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var (news, index) in Model.NewsList.Select((value,i)=>(value, ++i)))
+                                {
+
+                                    <tr>
+                                        <th scope="row"><a href="#">#@index</a></th>
+                                        <td>@news.Title</td>
+                                        <td>
+                                            <a title="click to see detail" asp-action="Detail" asp-controller="Manage" asp-route-title="@news.Title"><i class="ri-eye-2-line"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

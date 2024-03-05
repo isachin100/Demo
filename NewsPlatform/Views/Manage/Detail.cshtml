@@ -1,0 +1,23 @@
+﻿@model NewsDetailViewModel
+
+@{
+    ViewData["Title"] = "News Detail";
+}
+
+@await Html.PartialAsync("_breadcrumb", new BaseViewModel() { Breadcrumbs = Model.Breadcrumbs, Heading = Model.Heading })
+
+<section class="section">
+    <div class="row">
+        <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                    <h5 class="card-title">News<span>| Detail</span></h5>
+                    <p>
+                        @Model.NewsDetail.Description
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
